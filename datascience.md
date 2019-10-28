@@ -1,3 +1,13 @@
+# Data Science
+
+## RNN
+[RNN, LSTM and GRU tutorial](https://jhui.github.io/2017/03/15/RNN-LSTM-GRU/) - helpful combination of equations, diagrams and code.
+
+## Data Sources
+where to get it.
+
+[Kenya Open Data](https://www.opendata.go.ke/)
+
 # Data Science Competitions
 Online data science competitions.
 
