@@ -1,0 +1,27 @@
+---
+  title: "IATI Overview"
+output:
+  html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+```
+Tibbles and data.table are o exactly the same and it's worth noting the difference.
+See here where we try to get the rownames from by converting to data.table then to a tibble
+There is probably a better way to do this.
+```{r}
+library(dplyr)
+library(ggplot2)
+library(data.table)
+data("mtcars")
+
+cars <- data.table(mtcars, keep.rownames = TRUE) %>%
+  select("rn", "mpg", "cyl", "wt") %>%
+  rename(names = rn) %>%
+  mutate(cyl = factor(cyl))
+
+head(cars)
+
+qplot(x = mpg, y = wt, data=cars, geom= c("point", "smooth"))
+```
