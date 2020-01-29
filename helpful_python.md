@@ -17,6 +17,17 @@ format_size(os.path.getsize("path/to/file"))
 
 You can also use the `humanfriendly` library to format time more easily with `format_timespan`.
 
+TODO:
 ```python
 from datetime import timedelta
 from
+```
+
+## Get Json from requests
+I forget this a lot
+```python
+import requests
+
+response = requests.get(...)
+data = response.json()
+```
