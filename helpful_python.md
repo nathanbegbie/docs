@@ -31,3 +31,22 @@ import requests
 response = requests.get(...)
 data = response.json()
 ```
+
+## Logging, Debugging
+This is helpful generally, but also specifically came accross it using requests and Jupyter notbeooks:
+
+```python
+import logging
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+logging.info("this is informative logging!")
+```
+
+You can set the level where you want. So:
+```python
+...
+logger.setLevel(logging.DEBUG)
+logging.debug("You'll start getting Requests data if you use it now")
+...
+```
+Gives you all of the requests that are made using the Requests lib!
