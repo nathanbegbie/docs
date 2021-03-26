@@ -1,10 +1,12 @@
 # Helpful Python
 
 To get the size of a file use the follwoing:
+
 ```python
 import os
 os.path.getsize("path/to/file")
 ```
+
 This will give you the size of the file in bytes, which you may want to transform into something more readable.
 In this case the [humanfriendly](https://humanfriendly.readthedocs.io/en/latest/index.html) package is great!
 
@@ -18,13 +20,16 @@ format_size(os.path.getsize("path/to/file"))
 You can also use the `humanfriendly` library to format time more easily with `format_timespan`.
 
 TODO:
+
 ```python
 from datetime import timedelta
 from
 ```
 
-## Get Json from requests
+## Get JSON from requests
+
 I forget this a lot
+
 ```python
 import requests
 
@@ -32,7 +37,18 @@ response = requests.get(...)
 data = response.json()
 ```
 
+## Write JSON to file
+
+write from dict to JSON file:
+
+```python
+import json
+with open('result.json', 'w') as fp:
+    json.dump(sample, fp)
+```
+
 ## Logging, Debugging
+
 This is helpful generally, but also specifically came accross it using requests and Jupyter notbeooks:
 
 ```python
@@ -43,13 +59,37 @@ logging.info("this is informative logging!")
 ```
 
 You can set the level where you want. So:
+
 ```python
 ...
 logger.setLevel(logging.DEBUG)
 logging.debug("You'll start getting Requests data if you use it now")
 ...
 ```
+
 Gives you all of the requests that are made using the Requests lib!
+
+## Downloading a big file
+
+derived from [this question on stack overflow](https://stackoverflow.com/questions/16694907/download-large-file-in-python-with-requests)
+
+```python
+from pathlib import Path
+import requests
+import shutil
+
+def download_file(url, file_name=None, directory_path=None):
+    if not file_name:
+        file_name = Path(url.split("/")[-1])
+    if directory_path:
+        local_file_path = Path(directory_path, file_name)
+
+    with requests.get(url, stream=True) as r:
+        with open(local_file_path, "wb") as f:
+            shutil.copyfileobj(r.raw, f)
+
+    return local_file_path
+```
 
 ## Installing things with pip
 
