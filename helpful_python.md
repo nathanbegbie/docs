@@ -43,9 +43,21 @@ write from dict to JSON file:
 
 ```python
 import json
-with open('result.json', 'w') as fp:
-    json.dump(sample, fp)
+with open('result.json', 'w') as file:
+    json.dump(sample, file)
 ```
+
+## Read JSON from file
+
+read dict from JSON file:
+
+```python
+import json
+with open("./mySchema.json", "r", encoding="utf-8") as file:
+    schema = json.loads(file.read())
+```
+
+note the use of `loads` with an 's'!
 
 ## Logging, Debugging
 

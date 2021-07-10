@@ -47,3 +47,15 @@ instead of having to copy/paste in to the command line.
 ## [Enable Emmet for JSX](https://medium.com/@eshwaren/enable-emmet-support-for-jsx-in-visual-studio-code-react-f1f5dfe8809c)
 
 Quick and easy - click the link ^
+
+## Python Specific Settings
+
+If you're using isort and black for your project, you can auto-format both onSave
+with the following in your Workspace settings folder.
+
+```json
+{
+    "python.formatting.provider": "black",
+    "editor.codeActionsOnSave": { "source.organizeImports": true }
+}
+```
