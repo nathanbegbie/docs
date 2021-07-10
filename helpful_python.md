@@ -26,6 +26,33 @@ from datetime import timedelta
 from
 ```
 
+## Unzipping Files
+
+```python
+import shutil
+shutil.unpack_archive(filename, extract_dir)
+```
+
+## List All the Files in a Directory
+
+```python
+def get_files(directory, file_type_suffix):
+    return [
+        Path(directory, filename)
+        for filename
+        in listdir(directory) 
+        if Path(directory, filename).is_file() and filename.endswith(file_type_suffix)
+    ]
+```
+
+## Getting files names in a directory
+
+```python
+from os import listdir
+from os.path import isfile, join
+onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+```
+
 ## Get JSON from requests
 
 I forget this a lot
