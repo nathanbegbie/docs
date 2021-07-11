@@ -40,7 +40,7 @@ def get_files(directory, file_type_suffix):
     return [
         Path(directory, filename)
         for filename
-        in listdir(directory) 
+        in listdir(directory)
         if Path(directory, filename).is_file() and filename.endswith(file_type_suffix)
     ]
 ```
@@ -72,6 +72,12 @@ write from dict to JSON file:
 import json
 with open('result.json', 'w') as file:
     json.dump(sample, file)
+```
+
+If you want the file to be formatted, use `indent=2` like so:
+
+```python
+json.dump(sample, file, indent=2)
 ```
 
 ## Read JSON from file
