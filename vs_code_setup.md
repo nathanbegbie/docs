@@ -10,16 +10,16 @@ explaining how to set it up.
 Put the following in your Keyboard preferences:
 
 ```json
-({
-    "key": "ctrl+j",
+{
+    "key": "ctrl+`",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "!terminalFocus"
+    "when": "terminalFocus"
 },
 {
-    "key": "ctrl+k",
-    "command": "workbench.action.terminal.focus",
-    "when": "terminalFocus"
-})
+"key": "ctrl+`",
+"command": "workbench.action.terminal.focus",
+"when": "!terminalFocus"
+}
 ```
 
 Now I can easily switch between writing and running code with `ctrl + k` and `ctrl + j`.
