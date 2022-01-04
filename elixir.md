@@ -12,7 +12,7 @@ To find out where elixir is, we use `asdf where elixir`
 which gives us the path that the asdf version of elxir.
 
 ```shell
-screen -S $(asdf where elixir)/.mix/escripts/livebook server
+screen -S livebook $(asdf where elixir)/.mix/escripts/livebook server
 ```
 
 open the link that appears, as you need the token in the path,
