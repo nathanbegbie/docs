@@ -44,6 +44,9 @@ One of the things that is really nice about RStudio, is the ability to be workin
 in a script or RMarkdown document and the ability to run code where your cursor is
 instead of having to copy/paste in to the command line.
 
+[This stack overlflow answer](https://stackoverflow.com/a/54439971/3623641) explains
+how to do it, but it's a matter of updating the `workbench.action.terminal.runSelectedText`.
+
 ## [Enable Emmet for JSX](https://medium.com/@eshwaren/enable-emmet-support-for-jsx-in-visual-studio-code-react-f1f5dfe8809c)
 
 Quick and easy - click the link ^

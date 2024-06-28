@@ -151,3 +151,113 @@ To avoid this problem you can invoke Python with '-m pip' instead of running pip
 
 So it might be a good idea to switch the `-m` as a matter
 of routine.
+
+## Python, asdf and virtualenvwrapper
+
+This approach is cobbled together because I have the following needs:
+
+-   macOS
+-   brew for general package management on macOS
+-   asdf for managing python versions
+-   virtualenv and virtualenvwrapper for managing python environments
+
+This approach was informed by [this article](https://web.archive.org/web/20220819101628/https://abbasegbeyemi.me/blog/python-asdf-virtualenv/).
+
+To get the latest version of python:
+
+```sh
+asdf plugin-update python
+asdf install python latest
+```
+
+or you can install the specific version that you want
+
+```sh
+asdf install python 3.12.1
+```
+
+set it to be the global one
+
+```sh
+asdf global python 3.12.1
+```
+
+then install the virtualenv packages that you need
+
+```sh
+python -m pip install --upgrade pip
+python -m pip install virtualenv virtualenvwrapper
+asdf reshim
+```
+
+So we then create the environment:
+
+```sh
+mkvirtualenv my_project_name
+```
+
+The virtualenv will be activated once this command is complete.
+You can explicitly associate it with a directory if you would like
+
+## JupyterLab Desktop, Kernels and virtualenv
+
+Given the constraints mentioned above, we want to use JupyterLab and the
+power of notebooks, along with the the same setup that we use above
+for managing the python version and environments that we need in order
+to run these applications.
+
+We have
+
+-   JupyterLab _Desktop_
+
+However, because I want to have this standalone application, you also need
+to install jupyterlab because for some reason you need this as well for the
+managing the kernels. If you have only installed the Desktop application.
+
+So first make sure that you have:
+
+```sh
+brew install jupyterlab
+```
+
+This approach is informed by [this article](https://web.archive.org/web/20230724170856/https://sesync-ci.github.io/faq/python-virtual-env.html).
+
+Activate your desired virtualenvironment:
+
+```sh
+workon my_project_name
+```
+
+Given that we want to keep track of dependencies, you probably want to
+associate the virtualenv with a particular directory. This means that
+
+```sh
+mkvirtualenv -a project_path -p $(asdf where python)/bin/python name_of_project
+```
+
+Then we need to add the following:
+
+```sh
+python -m pip install --upgrade pip
+python -m pip install ipykernel
+```
+
+You can also add the packages that you want at this point.
+
+```sh
+python -m pip install pandas seaborn
+```
+
+Then we create the kernel.
+
+```sh
+python -m ipykernel install --user --name="kernel_name" --display-name="My Kernel Name"
+```
+
+Confirm it's create:
+
+```sh
+jupyter kernelspec list
+```
+
+Restart Jupyterlab
